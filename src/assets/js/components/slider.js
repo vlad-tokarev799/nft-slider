@@ -33,10 +33,16 @@ window.addEventListener('load', () => {
 	const startTrackPos = 150
 	let trackPos = startTrackPos
 	let cloneOn = 0
+	let oldTimestamp = 0
 	
 	function moveTrack(timestamp) {
 		let track = document.querySelector('.slider__track')
-		trackPos = trackPos + 2
+
+		if (timestamp >= oldTimestamp + 1000 / 60) {
+			console.log(timestamp, oldTimestamp)
+			trackPos += 1.5
+			oldTimestamp = timestamp
+		}
 	
 		if ((Math.round(trackPos) - cloneOn >= sliderWidth)) {
 			cloneSlides()
