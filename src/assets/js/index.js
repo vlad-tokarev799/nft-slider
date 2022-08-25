@@ -1,3 +1,1 @@
-window.addEventListener('DOMContentLoaded', function() {
-	
-})
+//= components/slider.js
