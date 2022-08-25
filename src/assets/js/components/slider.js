@@ -12,12 +12,21 @@ window.addEventListener('load', () => {
 
 	
 	sliderInner.addEventListener('mouseover', function() {
-		console.log(123)
-
 		cancelAnimationFrame(animation)
 	})
 	sliderInner.addEventListener('mouseout', function() {
 		animation = requestAnimationFrame(moveTrack)
+	})
+	sliderInner.addEventListener('mousedown', function(e) {
+		sliderInner.addEventListener('mousemove', dragTrack)
+	})
+	sliderInner.addEventListener('mouseup', function() {
+		sliderInner.removeEventListener('mousemove', dragTrack)
+
+		dragData = {
+			startPos: null,
+			translateStart: null
+		}
 	})
 
 	const sliderWidth = slider.clientWidth
@@ -27,7 +36,7 @@ window.addEventListener('load', () => {
 	
 	function moveTrack(timestamp) {
 		let track = document.querySelector('.slider__track')
-		trackPos = startTrackPos + timestamp / 10
+		trackPos = trackPos + 2
 	
 		if ((Math.round(trackPos) - cloneOn >= sliderWidth)) {
 			cloneSlides()
@@ -49,6 +58,40 @@ window.addEventListener('load', () => {
 					row.insertAdjacentElement('beforeend', cloneSlide)
 				})
 			})
+	}
+
+	let dragData = {
+		startPos: null,
+		translateStart: null,
+	}
+
+	function dragTrack(e) {
+		if (dragData.startPos) {
+			const movement = e.movementX < 0 ? -e.movementX : e.movementX
+			// console.log(movement * 0.1)
+
+			let track = document.querySelector('.slider__track')
+			let moveTo = -(e.pageX - dragData.startPos.x)
+			// moveTo *= movement * 0.1
+
+			trackPos = dragData.translateStart + moveTo
+			
+			if ((Math.round(trackPos) - cloneOn >= sliderWidth)) {
+				cloneSlides()
+				cloneOn = trackPos
+			}
+
+			track.style.transform = `translateX(-${trackPos}px)`
+
+		} else {
+			dragData = {
+				startPos: {
+					x: e.pageX,
+					y: e.pageY
+				},
+				translateStart: trackPos
+			}
+		}
 	}
 
 	cloneSlides()

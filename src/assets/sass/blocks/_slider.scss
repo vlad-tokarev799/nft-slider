@@ -1,14 +1,19 @@
 body {
-	margin-top: 514px;
+	// margin-top: 514px;
 }
 
 .slider {
 	width: 100%;
-	padding: 50px 0;
+	margin-top: -80px;
+	padding-top: 100px;
+	padding-bottom: 50px;
+
 	overflow: hidden;
+	user-select: none;
 	
 	&__inner {
 		transform: rotate(-3deg);
+		// overflow-x: hidden;
 	}
 
 	&__row {
@@ -21,11 +26,48 @@ body {
 	}
 
 	&__track {
-		transform-origin: center center;
+		// transform-origin: center center;
+		will-change: transform;
 	}
 }
 
 .slide {
-	margin: 10px;
+	margin: 8px;
 	flex-shrink: 0;
+	height: 400px;
+	position: relative;
+	
+	&_square {
+		width: 400px;
+		
+	}
+
+	&_wide {
+		width: 540px;
+	}
+
+	&__inner {
+		position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		
+		transition: 0.3s ease-in-out;
+
+		&:hover {
+			z-index: 1;
+			top: -54px;
+			right: -74px;
+			bottom: -54px;
+			left: -74px;
+
+			// transform: scale(1.27, 1.45);
+		}
+
+		img {
+			pointer-events: none;
+			width: 100%;
+		}
+	}
 }
