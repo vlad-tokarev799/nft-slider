@@ -7,6 +7,19 @@ window.addEventListener('load', () => {
 		.forEach(row => {
 			slidesArrs.push([...row.querySelectorAll('.slide')])
 		})
+
+	slidesArrs.forEach(slides => {
+		slides.forEach(slide => {
+			slide.addEventListener('mouseover', e => {
+				document.querySelector('.slider')
+					.classList.add('slider_hover')
+			})
+			slide.addEventListener('mouseout', e => {
+				document.querySelector('.slider')
+					.classList.remove('slider_hover')
+			})
+		})
+	})
 		
 	let animation = requestAnimationFrame(moveTrack)
 
@@ -39,7 +52,6 @@ window.addEventListener('load', () => {
 		let track = document.querySelector('.slider__track')
 
 		if (timestamp >= oldTimestamp + 1000 / 60) {
-			console.log(timestamp, oldTimestamp)
 			trackPos += 1.5
 			oldTimestamp = timestamp
 		}
