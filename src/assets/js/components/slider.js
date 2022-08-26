@@ -8,18 +8,20 @@ window.addEventListener('load', () => {
 			slidesArrs.push([...row.querySelectorAll('.slide')])
 		})
 
-	slidesArrs.forEach(slides => {
-		slides.forEach(slide => {
-			slide.addEventListener('mouseover', e => {
-				document.querySelector('.slider')
-					.classList.add('slider_hover')
-			})
-			slide.addEventListener('mouseout', e => {
-				document.querySelector('.slider')
-					.classList.remove('slider_hover')
-			})
-		})
-	})
+	// slidesArrs.forEach(slides => {
+	// 	slides.forEach(slide => {
+	// 		slide.addEventListener('mouseover', function() {
+	// 			setTimeout(() => {
+	// 				this.style.zIndex = 4
+	// 			}, 301)
+	// 		})
+	// 		slide.addEventListener('mouseout', function() {
+	// 			setTimeout(() => {
+	// 				this.style.zIndex = 0
+	// 			}, 301)
+	// 		})
+	// 	})
+	// })
 		
 	let animation = requestAnimationFrame(moveTrack)
 
@@ -29,6 +31,13 @@ window.addEventListener('load', () => {
 	})
 	sliderInner.addEventListener('mouseout', function() {
 		animation = requestAnimationFrame(moveTrack)
+
+		sliderInner.removeEventListener('mousemove', dragTrack)
+
+		dragData = {
+			startPos: null,
+			translateStart: null
+		}
 	})
 	sliderInner.addEventListener('mousedown', function(e) {
 		sliderInner.addEventListener('mousemove', dragTrack)
@@ -61,7 +70,8 @@ window.addEventListener('load', () => {
 			cloneOn = trackPos
 		}
 	
-		track.style.transform = `translateX(-${trackPos}px)`
+		// track.style.transform = `translateX(-${trackPos}px)`
+		track.style.marginLeft = `-${trackPos}px`
 	
 		animation = requestAnimationFrame(moveTrack)
 	}
@@ -99,7 +109,8 @@ window.addEventListener('load', () => {
 				cloneOn = trackPos
 			}
 
-			track.style.transform = `translateX(-${trackPos}px)`
+			// track.style.transform = `translateX(-${trackPos}px)`
+			track.style.marginLeft = `-${trackPos}px`
 
 		} else {
 			dragData = {
