@@ -46,7 +46,7 @@
 		display: block;
 		width: 412px;
 		height: 412px;
-		background: url("assets/img/slider_before.png");
+		background: url("..//img/slider_before.png");
 		position: absolute;
 			right: 65px;
 			top: -0px;
@@ -70,7 +70,7 @@
 		&:nth-child(2) {
 			&:after {
 				content: '';
-				background: url('assets/img/slider_after.png');
+				background: url('../img/slider_after.png');
 				display: block;
 				width: 416px;
 				height: 274px;
@@ -204,7 +204,7 @@
 			display: block;
 			width: 8px;
 			height: 15px;
-			background: url('assets/img/icons/Union.svg');
+			background: url('../img/icons/Union.svg');
 			margin-right: 9.5px;
 		}
 	}
