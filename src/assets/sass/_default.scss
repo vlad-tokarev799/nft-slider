@@ -4,4 +4,19 @@
 
 body {
   background: #0B0C2D;
+
+  border-bottom: 1px solid #f00;
+
+  &:after {
+		content: '';
+		width: 457px;
+		height: 457px;
+		display: block;
+		border-radius: 50%;
+		background: #1A52E2;
+		filter: blur(700px);
+		position: absolute;
+			left: -250px;
+			top: 250px;
+	}
 }

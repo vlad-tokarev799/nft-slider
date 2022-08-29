@@ -17,8 +17,9 @@
 	height: 120px;
 	position: absolute;
 		z-index: 3;
-		top: 11.1%;
+		top: 17%;
 		left: 35.8%;
+	cursor: pointer;
 
 	&__arrow {
 		background-image: url('/assets/img/icons/arrow.svg');

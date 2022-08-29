@@ -1,42 +1,60 @@
-@keyframes zIndexOffset {
+@keyframes zIndex {
 	0% {
-		// z-index: 0;
+		z-index: 3;
 	}
-
+	1% {
+		z-index: 3;
+	}
 	99% {
-		// z-index: 0;
+		z-index: 3;
 	}
-
 	100% {
 		z-index: 4;
 	}
 }
 
+@keyframes opacityCard {
+	0% {
+		opacity: 1;
+	}
+	33% {
+		opacity: 0.6;
+	}
+	60% {
+		opacity: 0.6;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 .slider {
 	width: 100%;
-	margin-top: -200px;
-	padding-top: 220px;
+	margin-top: -320px;
+	padding-top: 340px;
 
-	padding-bottom: 220px;
-	margin-bottom: -220px;
+	padding-bottom: 550px;
+	// margin-bottom: -850px;
 
 	overflow: hidden;
 	user-select: none;
 
 	position: relative;
 
+	&:before {
+		content: '';
+		display: block;
+		width: 412px;
+		height: 412px;
+		background: url("/assets/img/slider_before.png");
+		position: absolute;
+			right: 65px;
+			top: -0px;
+	}
+
 	&_wrapper {
 		position: relative;
 	}
-
-	// &_hover {
-	// 	&:after {
-	// 		z-index: -1 !important;
-	// 	}
-	// 	.slider__inner {
-	// 		z-index: 1;
-	// 	}
-	// }
 	
 	&__inner {
 		transform: rotate(-3deg);
@@ -61,6 +79,8 @@
 				bottom: -187px;
 				z-index: 3;
 				transform: rotate(3deg);
+				pointer-events: none;
+				transition: 0.3s ease-in-out;
 			}
 		}
 
@@ -70,8 +90,7 @@
 	}
 
 	&__track {
-		// transform-origin: center center;
-		// will-change: transform;
+		will-change: margin;
 		position: static;
 	}
 }
@@ -84,8 +103,17 @@
 	border-radius: 20px;
 	z-index: 1;
 
-	&:hover {
+	--animation-duration: 0.3s;
+
+	&_unhover {
 		z-index: 2;
+	}
+
+	&_hover {
+		animation: 
+			var(--animation-duration) linear forwards zIndex,
+			.6s ease-in-out forwards opacityCard
+		;
 	}
 	
 	&_square {
@@ -103,7 +131,7 @@
 			bottom: 0;
 			left: 0;
 		
-		transition: .3s ease-in-out;
+		transition: var(--animation-duration) ease-in-out;
 
 		overflow: hidden;
 		border-radius: 20px;
@@ -111,7 +139,6 @@
 		filter: drop-shadow(0px 0 0 rgba(0, 0, 0, 0.8));
 
 		&:hover {
-			z-index: 3;
 			top: -54px;
 			right: -74px;
 			bottom: -54px;
