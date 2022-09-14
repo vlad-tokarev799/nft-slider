@@ -57,9 +57,27 @@
 	}
 	
 	&__inner {
-		transform: rotate(-3deg);
+		transform: 
+			rotate(-3deg)
+			translateZ(0)
+		;
 		position: relative;
 		z-index: 1;
+
+		&:after {
+			content: '';
+			background: url('../img/slider_after.png');
+			display: block;
+			width: 416px;
+			height: 274px;
+			position: absolute;
+			left: 130px;
+			bottom: -187px;
+			z-index: 3;
+			transform: rotate(3deg);
+			pointer-events: none;
+			transition: 0.3s ease-in-out;
+		}
 	}
 
 	&__row {
@@ -68,20 +86,7 @@
 		position: static;
 
 		&:nth-child(2) {
-			&:after {
-				content: '';
-				background: url('../img/slider_after.png');
-				display: block;
-				width: 416px;
-				height: 274px;
-				position: absolute;
-				left: 130px;
-				bottom: -187px;
-				z-index: 3;
-				transform: rotate(3deg);
-				pointer-events: none;
-				transition: 0.3s ease-in-out;
-			}
+			
 		}
 
 		&_offset {

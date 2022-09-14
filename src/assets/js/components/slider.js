@@ -88,8 +88,8 @@ window.addEventListener('load', () => {
 			cloneOn = trackPos
 		}
 	
-		// track.style.transform = `translateX(-${trackPos}px)`
-		track.style.marginLeft = `-${trackPos}px`
+		track.style.transform = `translateX(-${trackPos}px)`
+		// track.style.marginLeft = `-${trackPos}px`
 	
 		animation = requestAnimationFrame(moveTrack)
 	}
@@ -127,8 +127,8 @@ window.addEventListener('load', () => {
 				cloneOn = trackPos
 			}
 
-			// track.style.transform = `translateX(-${trackPos}px)`
-			track.style.marginLeft = `-${trackPos}px`
+			track.style.transform = `translateX(-${trackPos}px)`
+			// track.style.marginLeft = `-${trackPos}px`
 
 		} else {
 			dragData = {
